@@ -1,2 +1,2 @@
 # RandomNumber
-Desktop application to generate a random number
+I'm working on it...
