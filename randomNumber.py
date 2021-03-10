@@ -6,10 +6,38 @@ root.geometry('500x500')
 root.title('Random Number Generator')
 # ---------------------------------------------------------------
 
-# Title frame
-titleFrame = LabelFrame(root, padx = 400, pady = 100).pack()
-title = Label(titleFrame, text = 'Random Number Generator', font = ('Comicsans', 20), padx = 20, pady = 20).pack()
+# Title
+title = Label(root, text = 'Random Number Generator', font = ('Comicsans', 20)).grid(row = 0, column = 0)
 
+# Type of number
+chooseType = StringVar()
+chooseType.set('Integer')
+Radiobutton(root, text = 'Integer', variable = chooseType, value = 'Integer').grid(row = 1, column = 0)
+Radiobutton(root, text = 'Floating point', variable = chooseType, value = 'Floating point').grid(row = 2, column = 0)
+
+# Values
+startTitle = Label(root, text = 'From:').grid(row = 3, column = 0)
+endTitle = Label(root, text = 'To:').grid(row = 3, column = 1)
+
+startValue = Entry(root, width = 20)
+endValue = Entry(root, width = 20)
+
+startValue.grid(row = 4, column = 0)
+endValue.grid(row = 4, column = 1)
+
+# Generate random number
+def randomNumber():
+    
+    if chooseType.get() == 'Integer':
+        number = random.randint( int( startValue.get() ), int( endValue.get() ) )
+        showRandomNumber = Label(root, text = number).grid(row = 6, column = 0)
+    
+    elif chooseType.get() == 'Floating point':
+        number = random.uniform(float( startValue.get() ), float( endValue.get() ) )
+        showRandomNumber = Label(root, text = number).grid(row = 6, column = 0)
+
+# Generate button
+generate = Button(root, text = 'Generate', command = randomNumber).grid(row = 5, column = 0, columnspan = 2)
 
 
 # ---------------------------------------------------------------
