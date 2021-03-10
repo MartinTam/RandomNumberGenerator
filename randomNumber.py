@@ -2,7 +2,7 @@ from tkinter import *
 import random
 
 root = Tk()
-root.geometry('500x500')
+root.geometry('800x500')
 root.title('Random Number Generator')
 # ---------------------------------------------------------------
 
@@ -26,15 +26,26 @@ startValue.grid(row = 4, column = 0)
 endValue.grid(row = 4, column = 1)
 
 # Generate random number
+
+showRandomNumber = Label(root)  # For destroying the last generate number
+
 def randomNumber():
-    
+    global showRandomNumber
+    showRandomNumber.destroy()
+
     if chooseType.get() == 'Integer':
         number = random.randint( int( startValue.get() ), int( endValue.get() ) )
-        showRandomNumber = Label(root, text = number).grid(row = 6, column = 0)
+        showRandomNumber = Label(root, text = number)
+        showRandomNumber.grid(row = 6, column = 0)
+
     
     elif chooseType.get() == 'Floating point':
-        number = random.uniform(float( startValue.get() ), float( endValue.get() ) )
-        showRandomNumber = Label(root, text = number).grid(row = 6, column = 0)
+        number = random.uniform( float( startValue.get() ), float( endValue.get() ) )
+        showRandomNumber = Label(root, text = number)
+        showRandomNumber.grid(row = 6, column = 0)
+
+
+    #showRandomNumber.grid_forget()
 
 # Generate button
 generate = Button(root, text = 'Generate', command = randomNumber).grid(row = 5, column = 0, columnspan = 2)
