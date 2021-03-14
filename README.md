@@ -1,5 +1,5 @@
 # RandomNumberGenerator
-This is a simple desktop application that generate random numbers.
+A simple desktop application to generate random numbers.
 
 # Tools:
 Python 3.8.5, module Tkinter
